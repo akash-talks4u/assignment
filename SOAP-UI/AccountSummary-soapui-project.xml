@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="9c233550-8827-4295-ba09-9c5143dfae47" activeEnvironment="Default" name="AccountSummary-BackendSOAP" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="152d7214-5227-4e9e-94b5-12fb6d451884" wsaVersion="NONE" name="AccountSummarySOAP" type="wsdl" bindingName="{http://www.digitalbank.org/AccountSummary/}AccountSummarySOAP" soapVersion="1_1" anonymous="optional" definition="file:/C:/Assignment/WSDL/AccountSummary.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Assignment\WSDL\AccountSummary.wsdl"><con:part><con:url>file:\C:\Assignment\WSDL\AccountSummary.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="AccountSummary" targetNamespace="http://www.digitalbank.org/AccountSummary/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.digitalbank.org/AccountSummary/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.digitalbank.org/AccountSummary/">
+      <xsd:element name="getAccountDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAccountDetailsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="accountNumber" type="xsd:string"/>
+            <xsd:element name="accountType" type="xsd:string"/>
+            <xsd:element name="balance" type="xsd:string"/>
+            <xsd:element name="customerid" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getAccountDetailsRequest">
+    <wsdl:part element="tns:getAccountDetails" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getAccountDetailsResponse">
+    <wsdl:part element="tns:getAccountDetailsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="AccountSummary">
+    <wsdl:operation name="getAccountDetails">
+      <wsdl:input message="tns:getAccountDetailsRequest"/>
+      <wsdl:output message="tns:getAccountDetailsResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccountSummarySOAP" type="tns:AccountSummary">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAccountDetails">
+      <soap:operation soapAction="http://www.digitalbank.org/AccountSummary/getAccountDetails"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccountSummary">
+    <wsdl:port binding="tns:AccountSummarySOAP" name="AccountSummarySOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://www.example.org/</con:endpoint></con:endpoints><con:operation id="026b3e20-f42c-4bc0-bda7-0fc176b1a15b" isOneWay="false" action="http://www.digitalbank.org/AccountSummary/getAccountDetails" name="getAccountDetails" bindingOperationName="getAccountDetails" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ff10e967-0217-447a-a47d-59fa65b69892" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://wild-meadow-8213.getsandbox.com/accountdetails</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.digitalbank.org/AccountSummary/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <acc:getAccountDetails>\r
+         <customerId>?</customerId>\r
+      </acc:getAccountDetails>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.digitalbank.org/AccountSummary/getAccountDetails"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService id="3169ece5-2948-426a-b3c9-e88a646b2db8" port="8080" path="/" host="DESKTOP-JC9RGDR" name="MockService 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="getAccountDetails" id="a2422f94-2614-4656-84c4-a8913308695b" interface="AccountSummarySOAP" operation="getAccountDetails"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="0cc812d5-e6fc-49f3-93be-3498222689ef" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acc="http://www.digitalbank.org/AccountSummary/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acc:getAccountDetailsResponse>
+         <accountNumber>?</accountNumber>
+         <accountType>?</accountType>
+         <balance>?</balance>
+         <customerid>?</customerid>
+      </acc:getAccountDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.digitalbank.org/AccountSummary/getAccountDetails"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
