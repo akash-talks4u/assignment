@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.digitalbank.org/AccountSummary/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AccountSummary"
+	targetNamespace="http://www.digitalbank.org/AccountSummary/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.digitalbank.org/AccountSummary/">
+			<xsd:element name="getAccountDetails">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="customerId" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getAccountDetailsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="accountNumber" type="xsd:string" />
+						<xsd:element name="accountType" type="xsd:string" />
+						<xsd:element name="balance" type="xsd:string" />
+						<xsd:element name="customerid" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="getAccountDetailsRequest">
+		<wsdl:part element="tns:getAccountDetails" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getAccountDetailsResponse">
+		<wsdl:part element="tns:getAccountDetailsResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:portType name="AccountSummary">
+		<wsdl:operation name="getAccountDetails">
+			<wsdl:input message="tns:getAccountDetailsRequest" />
+			<wsdl:output message="tns:getAccountDetailsResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="AccountSummarySOAP" type="tns:AccountSummary">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getAccountDetails">
+			<soap:operation
+				soapAction="http://www.digitalbank.org/AccountSummary/getAccountDetails" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="AccountSummary">
+		<wsdl:port binding="tns:AccountSummarySOAP" name="AccountSummarySOAP">
+			<soap:address location="http://wild-meadow-8213.getsandbox.com/accountdetails" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
